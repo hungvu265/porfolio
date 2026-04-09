@@ -873,11 +873,11 @@
                 max-width: 100%;
                 min-height: auto;
                 height: auto;
-                padding: 48px 20px 32px 20px; /* 20px side margins */
+                padding: 48px 20px 32px 20px;
                 -webkit-align-items: flex-start;
-                align-items: center;
+                align-items: flex-start;
                 -webkit-justify-content: flex-start;
-                justify-content: center;
+                justify-content: flex-start;
                 -webkit-flex-direction: column;
                 flex-direction: column;
                 gap: 0;
@@ -885,6 +885,7 @@
                 flex-shrink: 0;
                 -webkit-align-self: stretch;
                 align-self: stretch;
+                box-sizing: border-box;
             }
 
             .profile {
@@ -936,7 +937,8 @@
                 flex-direction: column;
                 -webkit-align-items: center;
                 align-items: center;
-                overflow: visible;
+                overflow: hidden;
+                box-sizing: border-box;
             }
 
             .hero-right-wrapper::before,
@@ -952,9 +954,10 @@
                 display: flex;
                 -webkit-flex-direction: column;
                 flex-direction: column;
-                -webkit-align-items: center;
-                align-items: center;
-                gap: 0;
+                -webkit-align-items: stretch;
+                align-items: stretch;
+                gap: 16px;
+                box-sizing: border-box;
             }
 
             /* Cards: full width minus 20px margins */
@@ -965,8 +968,10 @@
                 padding: 16px 16px 0 16px;
                 border-radius: 24px;
                 gap: 16px;
-                -webkit-align-items: center;
-                align-items: center;
+                -webkit-align-items: stretch;
+                align-items: stretch;
+                box-sizing: border-box;
+                overflow: hidden;
             }
 
             /* Tablet preview: full width minus card padding */
@@ -974,7 +979,7 @@
                 width: 100%;
                 max-width: 100%;
                 height: auto;
-                min-height: 180px;
+                min-height: 160px;
                 padding: 12px;
                 border-radius: 21.951px;
                 background: #F6F7F9;
@@ -983,15 +988,21 @@
                 -webkit-align-items: center;
                 align-items: center;
                 gap: 8px;
+                overflow: hidden;
+                /* Ngăn overflow ngang */
+                box-sizing: border-box;
             }
 
             .tablet-area {
-                width: 100%;
+                -webkit-flex: 1 1 0;
+                flex: 1 1 0;
+                min-width: 0;
                 -webkit-flex-direction: row;
                 flex-direction: row;
                 -webkit-align-items: center;
                 align-items: center;
                 gap: 8px;
+                overflow: hidden;
             }
 
             /* Ring frames: fill available width */
@@ -1001,16 +1012,11 @@
                 flex: 1 1 0;
                 width: auto;
                 min-width: 0;
-                height: 0;
-                /* Maintain 16:9-ish aspect ratio */
-                padding-bottom: calc((100vw - 40px - 40px - 32px) * 0.6); /* approx height */
-                padding: 3px;
-                border-radius: 13.576px;
-                box-shadow: -3px 3px 10px 0 rgba(99, 99, 99, 0.28);
-                /* Override padding-bottom approach — use aspect-ratio instead */
                 height: auto;
                 aspect-ratio: 287 / 171;
                 padding: 3px;
+                border-radius: 13.576px;
+                box-shadow: -3px 3px 10px 0 rgba(99, 99, 99, 0.28);
             }
 
             .tablet-frame {
@@ -1043,20 +1049,16 @@
                 -webkit-align-items: center;
                 align-items: center;
                 gap: 4px;
-                width: 28px;
+                /* Fix: phải bằng scroll-btn size để không tràn layout */
+                width: 44px;
                 -webkit-flex-shrink: 0;
                 flex-shrink: 0;
             }
 
             .scroll-btn {
-                width: 28px;
-                height: 28px;
-                padding: 6px;
-                /* Larger tap target for mobile */
-                min-width: 44px;
-                min-height: 44px;
                 width: 44px;
                 height: 44px;
+                padding: 6px;
                 border-radius: 50%;
             }
 
@@ -1122,6 +1124,7 @@
             .hero-left { padding: 40px 16px 24px 16px; }
             .hero-right { padding: 0 16px 48px 16px; }
             .scroll-btn { min-width: 36px; min-height: 36px; width: 36px; height: 36px; }
+            .side-controls { width: 36px; }
         }
 
         /* ── Safari viewport height fix ── */
