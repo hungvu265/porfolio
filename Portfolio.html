@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+    <title>DucHai – Product Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Caveat:wght@500;600&display=swap"
+          rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+        :root {
+            --bg: #f5f4f0;
+            --surface: #ffffff;
+            --text: #1a1a1a;
+            --muted: #6b6b6b;
+            --accent-blue: #2563eb;
+            --accent-pink: #e84393;
+            --accent-green: #16a34a;
+            --accent-orange: #ea580c;
+            --accent-teal: #0d9488;
+            --tag-bg: #efefef;
+            --border: #e2e2e2;
+            --radius: 18px;
+            --radius-sm: 10px;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.12);
+        }
+
+        @font-face {
+            font-family: 'MyFont';
+            src: url('font/SF-Pro.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'SF Pro Text';
+            src: url('/font/SF-Pro-Text-Ultralight.otf') format('opentype');
+            font-weight: 100;
+        }
+        @font-face {
+            font-family: 'SF Pro Text';
+            src: url('/font/SF-Pro-Text-UltralightItalic.otf') format('opentype');
+            font-weight: 100;
+            font-style: italic;
+        }
+        @font-face {
+            font-family: 'SF Pro Text';
+            src: url('/font/SF-Pro-Text-Thin.otf') format('opentype');
+            font-weight: 200;
+        }
+        @font-face {
+            font-family: 'SF Pro Text';
+            src: url('/font/SF-Pro-Text-ThinItalic.otf') format('opentype');
+            font-weight: 200;
+            font-style: italic;
+        }
+        @font-face {
+            font-family: 'SF Pro Text';
+            src: url('/font/SF-Pro-Text-Light.otf') format('opentype');
+            font-weight: 300;
+        }
+        @font-face {
+            font-family: 'SF Pro Text';
+            src: url('/font/SF-Pro-Text-LightItalic.otf') format('opentype');
+            font-weight: 300;
+            font-style: italic;
+        }
+        @font-face {
+            font-family: 'SF Pro Text';
+            src: url('/font/SF-Pro-Text-Regular.otf') format('opentype');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'SF Pro Text';
+            src: url('/font/SF-Pro-Text-RegularItalic.otf') format('opentype');
+            font-weight: 400;
+            font-style: italic;
+        }
+        @font-face {
+            font-family: 'SF Pro Text';
+            src: url('/font/SF-Pro-Text-Medium.otf') format('opentype');
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: 'SF Pro Text';
+            src: url('/font/SF-Pro-Text-MediumItalic.otf') format('opentype');
+            font-weight: 500;
+            font-style: italic;
+        }
+        @font-face {
+            font-family: 'SF Pro Text';
+            src: url('/font/SF-Pro-Text-Semibold.otf') format('opentype');
+            font-weight: 600;
+        }
+        @font-face {
+            font-family: 'SF Pro Text';
+            src: url('/font/SF-Pro-Text-SemiboldItalic.otf') format('opentype');
+            font-weight: 600;
+            font-style: italic;
+        }
+        @font-face {
+            font-family: 'SF Pro Text';
+            src: url('/font/SF-Pro-Text-Heavy.otf') format('opentype');
+            font-weight: 800;
+        }
+        @font-face {
+            font-family: 'SF Pro Text';
+            src: url('/font/SF-Pro-Text-HeavyItalic.otf') format('opentype');
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            /* Fix Safari overscroll */
+            overflow-x: hidden;
+        }
+
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            /* Prevent horizontal scroll on Safari */
+            overflow-x: hidden;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            margin: 0 auto;
+            background: white;
+            /* Safari-safe 100vh fix */
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            height: 100vh;
+        }
+
+        .hero-left {
+            display: -webkit-flex;
+            display: flex;
+            width: 460px;
+            padding: 40px 32px 80px 40px;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-align-items: flex-end;
+            align-items: flex-end;
+            -webkit-justify-content: flex-end;
+            justify-content: flex-end;
+            gap: 40px;
+            -webkit-flex-shrink: 0;
+            flex-shrink: 0;
+            -webkit-align-self: stretch;
+            align-self: stretch;
+        }
+
+        .hero-right {
+            width: 100%;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch; /* Safari smooth scroll */
+            height: 100%;
+            padding: 40px 40px 0 40px;
+        }
+
+        .hero-emojis img {
+            width: 213px;
+            height: 56px;
+        }
+
+        .hero-avatar-placeholder img {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
+        }
+        .hero-avatar-placeholder {
+            padding-bottom: 24px;
+        }
+
+        .hero-headline span {
+            color: var(--muted);
+        }
+
+        .hero-desc {
+            color: rgba(16, 19, 35, 0.64);
+            font-family: "SF Pro Text", -apple-system, sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 20px;
+            letter-spacing: -0.4px;
+            padding-bottom: 24px;
+        }
+
+        .hero-ctas {
+            color: #FFF;
+            text-align: center;
+            font-family: "SF Pro Text", -apple-system, sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 20px;
+            letter-spacing: -0.4px;
+            text-decoration: underline;
+            display: -webkit-flex;
+            display: flex;
+            gap: 12px;
+            -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+            padding-bottom: 24px;
+        }
+
+        .btn {
+            display: -webkit-inline-flex;
+            display: inline-flex;
+            -webkit-align-items: center;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 22px;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            -webkit-transition: transform .15s, box-shadow .15s;
+            transition: transform .15s, box-shadow .15s;
+        }
+
+        .btn:hover {
+            -webkit-transform: translateY(-1px);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .btn-dark {
+            background: var(--text);
+            color: #fff;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .btn-outline {
+            background: #fff;
+            color: var(--text);
+            border-radius: 8px;
+            border: 1px solid rgba(93, 107, 152, 0.32);
+        }
+
+        /* ── CARD WRAPPER ── */
+        .card-wrapper {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-self: stretch;
+            align-self: stretch;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-align-items: flex-start;
+            align-items: flex-start;
+            background: white;
+            border-radius: 32px;
+            padding: 40px 40px 0 40px;
+            width: 740px;
+            gap: 24px;
+        }
+
+        .tablet-color {
+            display: -webkit-flex;
+            display: flex;
+            width: 726px;
+            height: 415px;
+            background: #F6F7F9;
+            padding: 24px;
+            border-radius: 48px;
+            -webkit-align-items: center;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* ── TABLET AREA ── */
+        .tablet-area {
+            position: relative;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            gap: 16px;
+        }
+        .tablet-frame,
+        .tablet-frame *,
+        .tablet-hover-btn,
+        .tablet-hover-btn * {
+            cursor: none !important;
+        }
+
+        .tablet-ring1 {
+            background: #CCDAE3;
+            display: -webkit-flex;
+            display: flex;
+            width: 614px;
+            height: 367px;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            border-radius: 29.687px;
+            padding: 6.4px;
+            box-shadow: -4.986px 4.986px 14.959px 0 rgba(99, 99, 99, 0.32);
+        }
+
+        .tablet-ring2 {
+            background: #D6D6D6;
+            display: -webkit-flex;
+            display: flex;
+            width: 614px;
+            height: 367px;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            border-radius: 29.687px;
+            padding: 6.4px;
+            box-shadow: -4.986px 4.986px 14.959px 0 rgba(99, 99, 99, 0.32);
+        }
+
+        .tablet-ring3 {
+            background: #D1E3FA;
+            display: -webkit-flex;
+            display: flex;
+            width: 614px;
+            height: 367px;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            border-radius: 29.687px;
+            padding: 6.4px;
+            box-shadow: -4.986px 4.986px 14.959px 0 rgba(99, 99, 99, 0.32);
+        }
+
+        .tablet-ring4 {
+            background: #4B937B;
+            display: -webkit-flex;
+            display: flex;
+            width: 614px;
+            height: 367px;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            border-radius: 29.687px;
+            padding: 6.4px;
+            box-shadow: -4.986px 4.986px 14.959px 0 rgba(99, 99, 99, 0.32);
+        }
+
+        .tablet-ring5 {
+            background: #E0A533;
+            display: -webkit-flex;
+            display: flex;
+            width: 614px;
+            height: 367px;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            border-radius: 29.687px;
+            padding: 6.4px;
+            box-shadow: -4.986px 4.986px 14.959px 0 rgba(99, 99, 99, 0.32);
+        }
+
+        .tablet-frame {
+            width: 601px;
+            height: 355px;
+            position: absolute;
+            border-radius: 23.749px;
+            cursor: none;
+            overflow: hidden;
+        }
+
+        .tablet-hover-btn {
+            position: absolute;
+            -webkit-transform: translate(-50%, -50%) scale(0.9);
+            transform: translate(-50%, -50%) scale(0.9);
+            background: #101323;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 999px;
+            font-family: 'SF Pro Text', -apple-system, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            cursor: none;
+            opacity: 0;
+            -webkit-transition: opacity 0.25s ease, transform 0.25s ease;
+            transition: opacity 0.25s ease, -webkit-transform 0.25s ease;
+            pointer-events: none;
+            z-index: 20;
+            white-space: nowrap;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+        }
+        .tablet-hover-btn a {
+            text-decoration: none;
+            color: #FFFFFF;
+            font-family: 'SF Pro Text', -apple-system, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        .tablet-frame::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 23.749px;
+            opacity: 0;
+            -webkit-transition: opacity 0.25s ease;
+            transition: opacity 0.25s ease;
+            z-index: 15;
+            pointer-events: none;
+        }
+
+        .tablet-frame:hover::before {
+            opacity: 1;
+        }
+
+        /* ── VERTICAL SLIDER ── */
+        .tablet-screen {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            position: absolute;
+            height: 321px;
+            width: 571px;
+            left: 15px;
+            top: 17px;
+        }
+
+        .slider-track {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            height: 100%;
+            -webkit-transition: -webkit-transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+
+        .slide {
+            -webkit-flex-shrink: 0;
+            flex-shrink: 0;
+            height: 321px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        /* ── SIDE CONTROLS ── */
+        .side-controls {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-align-items: center;
+            align-items: center;
+            gap: 10px;
+            -webkit-flex-shrink: 0;
+            flex-shrink: 0;
+        }
+
+        .scroll-btn {
+            display: -webkit-flex;
+            display: flex;
+            width: 32px;
+            height: 32px;
+            padding: 8px;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 480px;
+            border: 0.5px solid rgba(93, 107, 152, 0.32);
+            background: #FFF;
+            /* Safari tap highlight fix */
+            -webkit-tap-highlight-color: transparent;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .scroll-btn svg { width: 9.313px; height: 5.487px; }
+
+        .scroll-btn:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+            background: #f0f0f0;
+            -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+        }
+
+        .scroll-btn:active {
+            -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+        }
+        .scroll-btn:disabled { opacity: 0.3; cursor: default; pointer-events: none; }
+
+        .scroll-dots {
+            display: -webkit-flex;
+            display: flex;
+            width: 32px;
+            padding: 8px;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            gap: 8px;
+            border-radius: 32px;
+            background: rgba(16, 19, 35, 0.32);
+        }
+
+        .scroll-dot {
+            display: -webkit-flex;
+            display: flex;
+            width: 8px;
+            height: 8px;
+            padding: 0 4px;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+            -webkit-align-items: center;
+            align-items: center;
+            border-radius: 50%;
+            background: #c0c2c8;
+            cursor: pointer;
+            -webkit-transition: background .25s, transform .25s, height .25s;
+            transition: background .25s, -webkit-transform .25s, height .25s;
+        }
+
+        .scroll-dot.active {
+            height: 8px;
+            width: 8px;
+            -webkit-flex-shrink: 0;
+            flex-shrink: 0;
+            border-radius: 480px;
+            background: #FFF;
+        }
+
+        /* ── INFO SECTION ── */
+        .info-section {
+            display: -webkit-flex;
+            display: flex;
+            width: 740px;
+            height: 188px;
+            padding: 16px;
+            -webkit-align-items: flex-start;
+            align-items: flex-start;
+            gap: 40px;
+            -webkit-align-self: stretch;
+            align-self: stretch;
+        }
+
+        .info-left {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: flex-start;
+            align-items: flex-start;
+            gap: 12px;
+            -webkit-flex: 1 0 0;
+            flex: 1 0 0;
+        }
+
+        .info-left h2 {
+            color: #005BE3;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            letter-spacing: -1.2px;
+        }
+
+        .info-left span {
+            color: #005BE3;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            letter-spacing: -1.2px;
+        }
+
+        .info-left p {
+            font-size: 0.88rem;
+            color: #6b6b6b;
+            line-height: 1.65;
+        }
+
+        .latest-link {
+            font-family: "Nanum Pen Script", cursive;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 24px;
+            letter-spacing: -0.2px;
+            line-height: 24px;
+            color: #E31B54;
+            text-decoration: none;
+            display: -webkit-inline-flex;
+            display: inline-flex;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-transform: rotate(-4deg);
+            transform: rotate(-4deg);
+        }
+
+        .info-right {
+            display: -webkit-flex;
+            display: flex;
+            color: rgba(16, 19, 35, 0.80);
+            font-family: "SF Pro Text", -apple-system, sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            letter-spacing: -0.4px;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: flex-start;
+            align-items: flex-start;
+            gap: 16px;
+            -webkit-flex: 1 0 0;
+            flex: 1 0 0;
+        }
+
+        .meta-row {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 0;
+            border-bottom: 1px solid #e2e2e2;
+            font-size: 0.9rem;
+        }
+
+        .meta-row:first-child { padding-top: 0; }
+        .meta-row:last-child { border-bottom: none; }
+
+        .meta-icon {
+            display: -webkit-flex;
+            display: flex;
+            font-size: 1.1rem;
+            -webkit-flex-shrink: 0;
+            flex-shrink: 0;
+            color: #555;
+        }
+
+        .meta-label { color: #555; }
+
+        .meta-link {
+            font-family: "SF Pro Text", -apple-system, sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            letter-spacing: -0.4px;
+            text-decoration: underline;
+            color: #155EEF;
+        }
+
+        .meta-link:hover { text-decoration: underline; }
+
+        .profile-image { height: 257px; width: 343px; }
+
+        .profile {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: baseline;
+            align-items: baseline;
+            -webkit-align-self: stretch;
+            align-self: stretch;
+        }
+
+        .span-profile1 {
+            color: #101323;
+            font-size: 48px;
+            font-style: normal;
+            font-weight: 650;
+            line-height: normal;
+            letter-spacing: -2px;
+            white-space: nowrap;
+            padding-bottom: 2px;
+        }
+
+        .span-profile {
+            color: rgba(16, 19, 35, 0.64);
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 650;
+            line-height: normal;
+            letter-spacing: -0.4px;
+            padding-bottom: 8px;
+        }
+
+        .hero-right-wrapper {
+            position: relative;
+            height: 100%;
+            -webkit-flex-shrink: 0;
+            flex-shrink: 0;
+        }
+
+        .hero-right-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: -webkit-linear-gradient(top, transparent, rgba(255, 255, 255, 0.95));
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.95));
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .hero-right-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: -webkit-linear-gradient(bottom, transparent, rgba(255, 255, 255, 0.95));
+            background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.95));
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* ══════════════════════════════════════════
+           iPad BREAKPOINT: 1025px – 1279px
+        ══════════════════════════════════════════ */
+        @media (min-width: 1025px) and (max-width: 1279px) {
+            .hero {
+                -webkit-flex-direction: column;
+                flex-direction: column;
+                height: auto;
+                min-height: 100vh;
+                width: 100%;
+                -webkit-align-items: center;
+                align-items: center;
+                -webkit-justify-content: flex-start;
+                justify-content: flex-start;
+                overflow-x: hidden;
+            }
+            .hero-left {
+                width: 490px;
+                height: auto;
+                padding: 48px 24px 32px 24px;
+                -webkit-flex-direction: column;
+                flex-direction: column;
+                -webkit-align-items: flex-start;
+                align-items: flex-start;;
+                -webkit-justify-content: flex-start;
+                justify-content: flex-start;;
+                gap: 0;
+                -webkit-flex-shrink: 0;
+                flex-shrink: 0;
+                -webkit-align-self: center;
+                align-self: center;
+                border-right: none;
+            }
+            .profile { width: 100%; padding-top: 0; -webkit-justify-content: flex-start; justify-content: flex-start; -webkit-align-items: flex-start; align-items: flex-start; }
+            .hero-avatar-placeholder { padding-bottom: 24px; padding-top: 0; }
+            .hero-avatar-placeholder img { width: 64px; height: 64px; }
+            .span-profile1 { font-size: 40px; letter-spacing: -1.8px; white-space: nowrap; padding-bottom: 2px; }
+            .span-profile { font-size: 34px; letter-spacing: -0.5px; padding-bottom: 8px; }
+            .hero-desc { font-size: 14px; line-height: 20px; padding-bottom: 24px; }
+            .hero-ctas { padding-bottom: 0; gap: 12px; }
+            .btn { padding: 10px 20px; font-size: 14px; }
+            .hero-right-wrapper { width: 490px; height: auto; overflow: visible; -webkit-flex-shrink: 0; flex-shrink: 0; -webkit-align-self: center; align-self: center; }
+            .hero-right-wrapper::before, .hero-right-wrapper::after { display: none; }
+            .hero-right { height: auto; overflow-y: visible; padding: 0 0 60px 0; display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; -webkit-align-items: center; align-items: center; gap: 0; }
+            .card-wrapper { width: 490px; padding: 24px 24px 0 24px; border-radius: 28px; gap: 16px; }
+            .tablet-color { width: 442px; height: 256px; padding: 14px; border-radius: 32px; gap: 12px; }
+            .tablet-area { width: 100%; gap: 12px; }
+            .tablet-ring1, .tablet-ring2, .tablet-ring3, .tablet-ring4, .tablet-ring5 {
+                -webkit-flex: 1; flex: 1; width: 380px; height: 228px; border-radius: 18px; padding: 4.5px;
+                box-shadow: -3.5px 3.5px 12px 0 rgba(99, 99, 99, 0.3);
+            }
+            .tablet-frame { width: calc(100% - 9px); height: calc(100% - 9px); border-radius: 14px; position: relative; }
+            .tablet-screen { position: absolute; width: calc(100% - 24px); height: calc(100% - 24px); left: 12px; top: 12px; border-radius: 10px; }
+            .slide { height: 100%; }
+            .slider-track { height: 100%; }
+            .side-controls { display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; -webkit-align-items: center; align-items: center; gap: 8px; width: 32px; -webkit-flex-shrink: 0; flex-shrink: 0; }
+            .scroll-btn { width: 32px; height: 32px; padding: 8px; }
+            .scroll-dots { width: 28px; padding: 8px 5px; gap: 6px; border-radius: 28px; }
+            .scroll-dot { width: 7px; height: 7px; }
+            .scroll-dot.active { width: 7px; height: 7px; }
+            .info-section { width: 442px; height: auto; padding: 12px 0; -webkit-flex-direction: column; flex-direction: column; gap: 12px; -webkit-align-self: center; align-self: center; }
+            .info-left { width: 100%; -webkit-flex: none; flex: none; gap: 8px; }
+            .info-left h2 { font-size: 22px !important; letter-spacing: -1px !important; }
+            .info-left p { font-size: 14px; line-height: 22px; }
+            .info-right { width: 100%; -webkit-flex: none; flex: none; gap: 8px; font-size: 14px; }
+            .meta-row { font-size: 14px; padding: 10px 0; gap: 8px; }
+            .meta-link { font-size: 14px; }
+        }
+
+        /* ══════════════════════════════════════════
+           Mobile / small tablet: up to 1024px
+           + 20px margin on both sides
+        ══════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            html, body {
+                /* Full width, let content be constrained via padding/margin */
+                width: 100%;
+                overflow-x: hidden;
+            }
+
+            .hero {
+                -webkit-flex-direction: column;
+                flex-direction: column;
+                /* Fix Safari 100vh bug - use min-height + JS fallback */
+                height: auto;
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+                width: 100%;
+                padding: 0;
+                -webkit-align-items: center;
+                align-items: center;
+                -webkit-justify-content: flex-start;
+                justify-content: flex-start;
+            }
+
+            .hero-left {
+                /* Full width with 20px side margins */
+                width: 100%;
+                max-width: 100%;
+                min-height: auto;
+                height: auto;
+                padding: 48px 20px 32px 20px; /* 20px side margins */
+                -webkit-align-items: flex-start;
+                align-items: center;
+                -webkit-justify-content: flex-start;
+                justify-content: center;
+                -webkit-flex-direction: column;
+                flex-direction: column;
+                gap: 0;
+                -webkit-flex-shrink: 0;
+                flex-shrink: 0;
+                -webkit-align-self: stretch;
+                align-self: stretch;
+            }
+
+            .profile {
+                width: 100%;
+                -webkit-align-items: flex-start;
+                align-items: flex-start;
+            }
+
+            .profile-image {
+                width: 100%;
+                height: auto;
+                max-width: 343px;
+                margin-bottom: 40px;
+            }
+
+            .profile-image img {
+                width: 100%;
+                height: auto;
+                max-width: 343px;
+            }
+
+            .hero-avatar-placeholder { padding-bottom: 24px; }
+            .hero-avatar-placeholder img { width: 56px; height: 56px; }
+
+            .span-profile1 {
+                font-size: clamp(24px, 8vw, 32px);
+                white-space: normal;
+                letter-spacing: -1.5px;
+                padding-bottom: 2px;
+                line-height: 1.15;
+            }
+            .span-profile {
+                font-size: clamp(20px, 7vw, 28px);
+                letter-spacing: -0.3px;
+                padding-bottom: 8px;
+                line-height: 1.2;
+            }
+            .hero-desc { font-size: 13px; line-height: 20px; padding-bottom: 24px; }
+            .hero-ctas { padding-bottom: 0; gap: 10px; }
+            .btn { padding: 9px 18px; font-size: 13px; }
+
+            /* RIGHT wrapper: full width, auto height on mobile */
+            .hero-right-wrapper {
+                width: 100%;
+                height: auto;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-flex-direction: column;
+                flex-direction: column;
+                -webkit-align-items: center;
+                align-items: center;
+                overflow: visible;
+            }
+
+            .hero-right-wrapper::before,
+            .hero-right-wrapper::after { display: none; }
+
+            .hero-right {
+                width: 100%;
+                height: auto;
+                overflow-y: visible;
+                /* 20px side padding */
+                padding: 0 20px 60px 20px;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-flex-direction: column;
+                flex-direction: column;
+                -webkit-align-items: center;
+                align-items: center;
+                gap: 0;
+            }
+
+            /* Cards: full width minus 20px margins */
+            .card-wrapper {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+                padding: 16px 16px 0 16px;
+                border-radius: 24px;
+                gap: 16px;
+                -webkit-align-items: center;
+                align-items: center;
+            }
+
+            /* Tablet preview: full width minus card padding */
+            .tablet-color {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+                min-height: 180px;
+                padding: 12px;
+                border-radius: 21.951px;
+                background: #F6F7F9;
+                -webkit-flex-direction: row;
+                flex-direction: row;
+                -webkit-align-items: center;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .tablet-area {
+                width: 100%;
+                -webkit-flex-direction: row;
+                flex-direction: row;
+                -webkit-align-items: center;
+                align-items: center;
+                gap: 8px;
+            }
+
+            /* Ring frames: fill available width */
+            .tablet-ring1, .tablet-ring2, .tablet-ring3,
+            .tablet-ring4, .tablet-ring5 {
+                -webkit-flex: 1 1 0;
+                flex: 1 1 0;
+                width: auto;
+                min-width: 0;
+                height: 0;
+                /* Maintain 16:9-ish aspect ratio */
+                padding-bottom: calc((100vw - 40px - 40px - 32px) * 0.6); /* approx height */
+                padding: 3px;
+                border-radius: 13.576px;
+                box-shadow: -3px 3px 10px 0 rgba(99, 99, 99, 0.28);
+                /* Override padding-bottom approach — use aspect-ratio instead */
+                height: auto;
+                aspect-ratio: 287 / 171;
+                padding: 3px;
+            }
+
+            .tablet-frame {
+                width: 100%;
+                height: 100%;
+                border-radius: 10.861px;
+                position: relative;
+            }
+
+            .tablet-screen {
+                width: calc(100% - 16px);
+                height: calc(100% - 16px);
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                border-radius: 8px;
+            }
+
+            .slide { height: 100%; }
+            .slider-track { height: 100%; }
+
+            /* Side controls */
+            .side-controls {
+                display: -webkit-flex;
+                display: flex;
+                -webkit-flex-direction: column;
+                flex-direction: column;
+                -webkit-justify-content: center;
+                justify-content: center;
+                -webkit-align-items: center;
+                align-items: center;
+                gap: 4px;
+                width: 28px;
+                -webkit-flex-shrink: 0;
+                flex-shrink: 0;
+            }
+
+            .scroll-btn {
+                width: 28px;
+                height: 28px;
+                padding: 6px;
+                /* Larger tap target for mobile */
+                min-width: 44px;
+                min-height: 44px;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+            }
+
+            .scroll-dots {
+                display: -webkit-flex;
+                display: flex;
+                width: 24px;
+                padding: 6px 4px;
+                -webkit-flex-direction: column;
+                flex-direction: column;
+                -webkit-justify-content: center;
+                justify-content: center;
+                -webkit-align-items: center;
+                align-items: center;
+                gap: 4px;
+                border-radius: 32px;
+                background: rgba(16, 19, 35, 0.32);
+            }
+
+            .scroll-dot {
+                width: 6px;
+                height: 6px;
+                padding: 0;
+                border-radius: 50%;
+            }
+
+            .scroll-dot.active {
+                width: 6px;
+                height: 6px;
+                border-radius: 480px;
+            }
+
+            /* Info section */
+            .info-section {
+                width: 100%;
+                height: auto;
+                -webkit-flex-direction: column;
+                flex-direction: column;
+                -webkit-align-items: flex-start;
+                align-items: flex-start;
+                -webkit-align-self: stretch;
+                align-self: stretch;
+                gap: 12px;
+                padding: 12px 4px 16px 4px;
+            }
+
+            .info-left { width: 100%; -webkit-flex: none; flex: none; gap: 8px; }
+            .info-right { width: 100%; -webkit-flex: none; flex: none; gap: 4px; }
+
+            .info-left h2 { font-size: 18px !important; letter-spacing: -0.8px !important; }
+            .info-left h2 span { font-size: 18px !important; }
+            .info-left p { font-size: 13px; line-height: 20px; }
+
+            .meta-row { font-size: 13px; padding: 8px 0; gap: 8px; }
+            .meta-link, .info-right { font-size: 13px; }
+            .meta-link { font-size: 13px; }
+        }
+
+        /* Extra small phones (< 390px) */
+        @media (max-width: 389px) {
+            .span-profile1 { font-size: 22px; }
+            .span-profile { font-size: 18px; }
+            .hero-left { padding: 40px 16px 24px 16px; }
+            .hero-right { padding: 0 16px 48px 16px; }
+            .scroll-btn { min-width: 36px; min-height: 36px; width: 36px; height: 36px; }
+        }
+
+        /* ── Safari viewport height fix ── */
+        @supports (-webkit-touch-callout: none) {
+            .hero {
+                /* iOS Safari: use -webkit-fill-available */
+                min-height: -webkit-fill-available;
+            }
+        }
+
+        /* Scrollbar hide */
+        ::-webkit-scrollbar { display: none; }
+        * { scrollbar-width: none; -ms-overflow-style: none; }
+    </style>
+</head>
+<body>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-left">
+        <div class="profile-image">
+            <img src="/image/intro/UI%20Design/Group%2048095452.png" alt=""
+                 style="height: auto; width: 100%; max-width: 343px; align-self: stretch;">
+        </div>
+        <div class="profile-image" style="height:auto; width:100%;">
+            <div class="profile">
+                <div class="hero-avatar-placeholder" title="DucHai">
+                    <img src="https://scontent.fhan14-1.fna.fbcdn.net/v/t39.30808-6/289315320_3176423479236678_4744048166378032250_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=OSlxmPjZfMcQ7kNvwHhrsno&_nc_oc=AdqDNSEDZD0a0-enbAoPSxOwpmzslJBUZ6pc6MrUDjOww8YjQI-xJ63Lw1JhCk1chVs&_nc_zt=23&_nc_ht=scontent.fhan14-1.fna&_nc_gid=St0t9aMHZMuD538pUU4eiA&_nc_ss=7a3a8&oh=00_Af3MhivLg5KEcevsTwKvdcWoLWoAaY5R246_DHwoKLTEIw&oe=69D4704F" alt="">
+                </div>
+
+                <span class="span-profile1" style="font-family: MyFont, -apple-system, sans-serif;">Designing for growth,</span>
+                <span class="span-profile" style="font-family: MyFont, -apple-system, sans-serif;">optimized for people.</span>
+                <p class="hero-desc">My work focuses on understanding users deeply and turning insights into clear, scalable
+                    product solutions.</p>
+                <div class="hero-ctas">
+                    <a class="btn btn-dark" style="text-decoration: underline" href="https://www.linkedin.com/in/duc-hai-447b54220" target="_blank">My Linkedin</a>
+                    <a class="btn btn-outline" href="https://www.facebook.com/UxLabtoday" target="_blank">Blogs <svg xmlns="http://www.w3.org/2000/svg" width="7" height="12" viewBox="0 0 7 12" fill="none">
+                        <path d="M0.2925 9.4625L4.1725 5.5825L0.2925 1.7025C-0.0975 1.3125 -0.0975 0.6825 0.2925 0.2925C0.6825 -0.0975 1.3125 -0.0975 1.7025 0.2925L6.2925 4.8825C6.6825 5.2725 6.6825 5.9025 6.2925 6.2925L1.7025 10.8825C1.3125 11.2725 0.6825 11.2725 0.2925 10.8825C-0.0875 10.4925 -0.0975 9.8525 0.2925 9.4625Z" fill="#101323"/>
+                    </svg></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-right-wrapper">
+        <div class="hero-right">
+
+            <!-- ══ CARD 1: MEEZY ══ -->
+            <div class="card-wrapper">
+                <div class="tablet-color">
+                    <div class="tablet-area">
+                        <div class="tablet-ring1">
+                            <div class="tablet-frame" style="background: #313045">
+                                <div class="tablet-screen">
+                                    <div class="slider-track" id="slider-1">
+                                        <div class="slide"><img src="/image/1%20(1).png" alt=""></div>
+                                        <div class="slide"><img src="/image/1%20(2).png" alt=""></div>
+                                        <div class="slide"><img src="/image/1%20(3).png" alt=""></div>
+                                        <div class="slide"><img src="/image/1%20(4).png" alt=""></div>
+                                        <div class="slide"><img src="/image/1%20(5).png" alt=""></div>
+                                    </div>
+                                </div>
+                                <button class="tablet-hover-btn"><a href="https://www.figma.com/design/w9pGBjwW3doEs2pPJHxKXB/Meezy.vn-Case-Study?node-id=0-1&p=f&t=37rdYaWtDsjjqomZ-0" target="_blank">Xem chi tiết <svg xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8" fill="none"><path d="M0.195 0.195842C-0.065 0.455842 -0.065 0.875841 0.195 1.13584L2.78167 3.72251L0.195 6.30918C-0.065 6.56918 -0.065 6.98918 0.195 7.24918C0.455 7.50918 0.875 7.50918 1.135 7.24918L4.195 4.18917C4.455 3.92917 4.455 3.50917 4.195 3.24917L1.135 0.189175C0.881667 -0.0641586 0.455 -0.0641585 0.195 0.195842Z" fill="white"/></svg></a></button>
+                            </div>
+                        </div>
+                        <div class="side-controls">
+                            <button class="scroll-btn" data-target="slider-1" data-dir="-1" aria-label="Previous"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1.42708 5.24375L4.66042 2.01042L7.89375 5.24375C8.21875 5.56875 8.74375 5.56875 9.06875 5.24375C9.39375 4.91875 9.39375 4.39375 9.06875 4.06875L5.24375 0.24375C4.91875 -0.08125 4.39375 -0.08125 4.06875 0.24375L0.24375 4.06875C-0.08125 4.39375 -0.08125 4.91875 0.24375 5.24375C0.56875 5.56042 1.10208 5.56875 1.42708 5.24375Z" fill="#101323"/></svg></button>
+                            <div class="scroll-dots" id="dots-1">
+                                <div class="scroll-dot active"></div>
+                                <div class="scroll-dot"></div>
+                                <div class="scroll-dot"></div>
+                                <div class="scroll-dot"></div>
+                                <div class="scroll-dot"></div>
+                            </div>
+                            <button class="scroll-btn" data-target="slider-1" data-dir="1" aria-label="Next"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1.42708 0.24375L4.66042 3.47708L7.89375 0.24375C8.21875 -0.08125 8.74375 -0.08125 9.06875 0.24375C9.39375 0.56875 9.39375 1.09375 9.06875 1.41875L5.24375 5.24375C4.91875 5.56875 4.39375 5.56875 4.06875 5.24375L0.24375 1.41875C-0.08125 1.09375 -0.08125 0.56875 0.24375 0.24375C0.56875 -0.0729167 1.10208 -0.08125 1.42708 0.24375Z" fill="#101323"/></svg></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-section">
+                    <div class="info-left">
+                        <h2><span style="color:#005BE3;font-family:'SF Pro Text',-apple-system,sans-serif;font-size:24px;font-weight:700;letter-spacing:-1.2px;">MEEZY</span><span style="color:#101323;font-size:24px;font-family:'SF Pro Text',-apple-system,sans-serif;font-weight:600;letter-spacing:-1.2px;">- The AI Note Taker</span></h2>
+                        <p style="color:rgba(16,19,35,0.64);font-family:'SF Pro Text',-apple-system,sans-serif;font-size:16px;font-weight:400;line-height:24px;letter-spacing:-0.4px;">Meezy is an AI note-taker tool that helps users get transcripts, automated summaries, and action items from their meetings.</p>
+                        <a class="latest-link" href="#">‹ Latest project ›</a>
+                    </div>
+                    <div class="info-right">
+                        <div class="meta-row"><span class="meta-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><g clip-path="url(#clip0_250_6425)"><path d="M10 1.66669C12.0844 3.94865 13.269 6.91005 13.3334 10C13.269 13.09 12.0844 16.0514 10 18.3334M10 1.66669C7.91562 3.94865 6.73106 6.91005 6.66669 10C6.73106 13.09 7.91562 16.0514 10 18.3334M10 1.66669C5.39765 1.66669 1.66669 5.39765 1.66669 10C1.66669 14.6024 5.39765 18.3334 10 18.3334M10 1.66669C14.6024 1.66669 18.3334 5.39765 18.3334 10C18.3334 14.6024 14.6024 18.3334 10 18.3334M2.08337 7.50002H17.9167M2.08335 12.5H17.9167" stroke="#5D6B98" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_250_6425"><rect width="20" height="20" fill="white"/></clipPath></defs></svg></span><span class="meta-label">Project:</span><a class="meta-link" href="https://meezy.vn/" target="_blank">Meezy.vn</a></div>
+                        <div class="meta-row"><span class="meta-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17.5 8.33335H2.5M13.3333 1.66669V5.00002M6.66667 1.66669V5.00002M6.5 18.3334H13.5C14.9001 18.3334 15.6002 18.3334 16.135 18.0609C16.6054 17.8212 16.9878 17.4387 17.2275 16.9683C17.5 16.4335 17.5 15.7335 17.5 14.3334V7.33335C17.5 5.93322 17.5 5.23316 17.2275 4.69838C16.9878 4.22797 16.6054 3.84552 16.135 3.60584C15.6002 3.33335 14.9001 3.33335 13.5 3.33335H6.5C5.09987 3.33335 4.3998 3.33335 3.86502 3.60584C3.39462 3.84552 3.01217 4.22797 2.77248 4.69838C2.5 5.23316 2.5 5.93322 2.5 7.33335V14.3334C2.5 15.7335 2.5 16.4335 2.77248 16.9683C3.01217 17.4387 3.39462 17.8212 3.86502 18.0609C4.3998 18.3334 5.09987 18.3334 6.5 18.3334Z" stroke="#5D6B98" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta-label">Time:</span><span class="meta-val">2 months 2 weeks</span></div>
+                        <div class="meta-row"><span class="meta-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.33333 5.83331C3.33333 5.37498 3.70833 4.99998 4.16667 4.99998H17.5C17.9583 4.99998 18.3333 4.62498 18.3333 4.16665C18.3333 3.70831 17.9583 3.33331 17.5 3.33331H3.33333C2.41667 3.33331 1.66667 4.08331 1.66667 4.99998V14.1666H1.25C0.558333 14.1666 0 14.725 0 15.4166C0 16.1083 0.558333 16.6666 1.25 16.6666H11.6667V14.1666H3.33333V5.83331ZM19.1667 6.66665H14.1667C13.7083 6.66665 13.3333 7.04165 13.3333 7.49998V15.8333C13.3333 16.2916 13.7083 16.6666 14.1667 16.6666H19.1667C19.625 16.6666 20 16.2916 20 15.8333V7.49998C20 7.04165 19.625 6.66665 19.1667 6.66665ZM18.3333 14.1666H15V8.33331H18.3333V14.1666Z" fill="#5D6B98"/></svg></span><span class="meta-label">Device:</span><span class="meta-val">Mobile</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══ CARD 2: CHADO ══ -->
+            <div class="card-wrapper">
+                <div class="tablet-color">
+                    <div class="tablet-area">
+                        <div class="tablet-ring2">
+                            <div class="tablet-frame" style="background: #636363">
+                                <div class="tablet-screen">
+                                    <div class="slider-track" id="slider-2">
+                                        <div class="slide"><img src="/image/chado1.png" alt=""></div>
+                                        <div class="slide"><img src="/image/chado2.png" alt=""></div>
+                                        <div class="slide"><img src="/image/chado3.png" alt=""></div>
+                                        <div class="slide"><img src="/image/chado4.png" alt=""></div>
+                                        <div class="slide"><img src="/image/chado5.png" alt=""></div>
+                                    </div>
+                                </div>
+                                <button class="tablet-hover-btn"><a href="https://www.figma.com/proto/4GXd7Gw0EOL3zgxmJ9EGUh/Porfolio?node-id=424-3149&viewport=667%2C488%2C0.23&t=gsLtI7h5RwpzSZXM-1&scaling=min-zoom&content-scaling=fixed&page-id=424%3A3147" target="_blank">Xem chi tiết <svg xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8" fill="none"><path d="M0.195 0.195842C-0.065 0.455842 -0.065 0.875841 0.195 1.13584L2.78167 3.72251L0.195 6.30918C-0.065 6.56918 -0.065 6.98918 0.195 7.24918C0.455 7.50918 0.875 7.50918 1.135 7.24918L4.195 4.18917C4.455 3.92917 4.455 3.50917 4.195 3.24917L1.135 0.189175C0.881667 -0.0641586 0.455 -0.0641585 0.195 0.195842Z" fill="white"/></svg></a></button>
+                            </div>
+                        </div>
+                        <div class="side-controls">
+                            <button class="scroll-btn" data-target="slider-2" data-dir="-1" aria-label="Previous"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1.42708 5.24375L4.66042 2.01042L7.89375 5.24375C8.21875 5.56875 8.74375 5.56875 9.06875 5.24375C9.39375 4.91875 9.39375 4.39375 9.06875 4.06875L5.24375 0.24375C4.91875 -0.08125 4.39375 -0.08125 4.06875 0.24375L0.24375 4.06875C-0.08125 4.39375 -0.08125 4.91875 0.24375 5.24375C0.56875 5.56042 1.10208 5.56875 1.42708 5.24375Z" fill="#101323"/></svg></button>
+                            <div class="scroll-dots" id="dots-2">
+                                <div class="scroll-dot active"></div>
+                                <div class="scroll-dot"></div>
+                                <div class="scroll-dot"></div>
+                                <div class="scroll-dot"></div>
+                                <div class="scroll-dot"></div>
+                            </div>
+                            <button class="scroll-btn" data-target="slider-2" data-dir="1" aria-label="Next"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1.42708 0.24375L4.66042 3.47708L7.89375 0.24375C8.21875 -0.08125 8.74375 -0.08125 9.06875 0.24375C9.39375 0.56875 9.39375 1.09375 9.06875 1.41875L5.24375 5.24375C4.91875 5.56875 4.39375 5.56875 4.06875 5.24375L0.24375 1.41875C-0.08125 1.09375 -0.08125 0.56875 0.24375 0.24375C0.56875 -0.0729167 1.10208 -0.08125 1.42708 0.24375Z" fill="#101323"/></svg></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-section">
+                    <div class="info-left">
+                        <h2><span style="color:#16B364;font-family:'SF Pro Text',-apple-system,sans-serif;font-size:24px;font-weight:700;letter-spacing:-1.2px;">CHADO</span><span style="color:#101323;font-family:'SF Pro Text',-apple-system,sans-serif;font-size:24px;font-weight:600;letter-spacing:-1.2px;"> – Charity Donation Platform</span></h2>
+                        <p style="color:rgba(16,19,35,0.64);font-family:'SF Pro Text',-apple-system,sans-serif;font-size:16px;font-weight:400;line-height:24px;letter-spacing:-0.4px;">Chado is a technology platform that supports direct fundraising and helps users to know who is around you in difficulty.</p>
+                    </div>
+                    <div class="info-right">
+                        <div class="meta-row"><span class="meta-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8.33333 10.8333C8.69121 11.3118 9.1478 11.7077 9.67212 11.9941C10.1965 12.2806 10.7763 12.4509 11.3722 12.4936C11.9682 12.5363 12.5663 12.4503 13.1261 12.2415C13.6859 12.0327 14.1943 11.7059 14.6167 11.2833L17.1167 8.78334C17.8757 7.9975 18.2956 6.94499 18.2861 5.85251C18.2766 4.76002 17.8384 3.71497 17.0659 2.94243C16.2934 2.1699 15.2483 1.7317 14.1558 1.7222C13.0633 1.71271 12.0108 2.13269 11.225 2.89168L9.79166 4.31668M11.6667 9.16668C11.3088 8.68824 10.8522 8.29236 10.3279 8.00589C9.80355 7.71943 9.22374 7.54908 8.62779 7.5064C8.03184 7.46372 7.43368 7.54971 6.87388 7.75853C6.31408 7.96735 5.80574 8.29412 5.38333 8.71668L2.88333 11.2167C2.12434 12.0025 1.70436 13.055 1.71386 14.1475C1.72335 15.24 2.16155 16.2851 2.93409 17.0576C3.70662 17.8301 4.75167 18.2683 5.84416 18.2778C6.93665 18.2873 7.98916 17.8673 8.775 17.1083L10.2 15.6833" stroke="#5D6B98" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta-label">Project:</span><a class="meta-link" href="https://www.figma.com/proto/4GXd7Gw0EOL3zgxmJ9EGUh/Porfolio?node-id=424-3149" target="_blank">Case Study</a></div>
+                        <div class="meta-row"><span class="meta-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17.5 8.33335H2.5M13.3333 1.66669V5.00002M6.66667 1.66669V5.00002M6.5 18.3334H13.5C14.9001 18.3334 15.6002 18.3334 16.135 18.0609C16.6054 17.8212 16.9878 17.4387 17.2275 16.9683C17.5 16.4335 17.5 15.7335 17.5 14.3334V7.33335C17.5 5.93322 17.5 5.23316 17.2275 4.69838C16.9878 4.22797 16.6054 3.84552 16.135 3.60584C15.6002 3.33335 14.9001 3.33335 13.5 3.33335H6.5C5.09987 3.33335 4.3998 3.33335 3.86502 3.60584C3.39462 3.84552 3.01217 4.22797 2.77248 4.69838C2.5 5.23316 2.5 5.93322 2.5 7.33335V14.3334C2.5 15.7335 2.5 16.4335 2.77248 16.9683C3.01217 17.4387 3.39462 17.8212 3.86502 18.0609C4.3998 18.3334 5.09987 18.3334 6.5 18.3334Z" stroke="#5D6B98" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta-label">Time:</span><span class="meta-val">3 months</span></div>
+                        <div class="meta-row"><span class="meta-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.33333 5.83331C3.33333 5.37498 3.70833 4.99998 4.16667 4.99998H17.5C17.9583 4.99998 18.3333 4.62498 18.3333 4.16665C18.3333 3.70831 17.9583 3.33331 17.5 3.33331H3.33333C2.41667 3.33331 1.66667 4.08331 1.66667 4.99998V14.1666H1.25C0.558333 14.1666 0 14.725 0 15.4166C0 16.1083 0.558333 16.6666 1.25 16.6666H11.6667V14.1666H3.33333V5.83331ZM19.1667 6.66665H14.1667C13.7083 6.66665 13.3333 7.04165 13.3333 7.49998V15.8333C13.3333 16.2916 13.7083 16.6666 14.1667 16.6666H19.1667C19.625 16.6666 20 16.2916 20 15.8333V7.49998C20 7.04165 19.625 6.66665 19.1667 6.66665ZM18.3333 14.1666H15V8.33331H18.3333V14.1666Z" fill="#5D6B98"/></svg></span><span class="meta-label">Device:</span><span class="meta-val">Mobile</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══ CARD 3: WATER TRACKER ══ -->
+            <div class="card-wrapper">
+                <div class="tablet-color">
+                    <div class="tablet-area">
+                        <div class="tablet-ring3">
+                            <div class="tablet-frame" style="background: #1D263B">
+                                <div class="tablet-screen">
+                                    <div class="slider-track" id="slider-3">
+                                        <div class="slide"><img src="/image/water1.png" alt=""></div>
+                                        <div class="slide"><img src="/image/water2.png" alt=""></div>
+                                        <div class="slide"><img src="/image/water3.png" alt=""></div>
+                                        <div class="slide"><img src="/image/water4.png" alt=""></div>
+                                        <div class="slide"><img src="/image/water5.png" alt=""></div>
+                                    </div>
+                                </div>
+                                <button class="tablet-hover-btn"><a href="https://www.figma.com/proto/4GXd7Gw0EOL3zgxmJ9EGUh/Porfolio?node-id=424-5727" target="_blank">Xem chi tiết <svg xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8" fill="none"><path d="M0.195 0.195842C-0.065 0.455842 -0.065 0.875841 0.195 1.13584L2.78167 3.72251L0.195 6.30918C-0.065 6.56918 -0.065 6.98918 0.195 7.24918C0.455 7.50918 0.875 7.50918 1.135 7.24918L4.195 4.18917C4.455 3.92917 4.455 3.50917 4.195 3.24917L1.135 0.189175C0.881667 -0.0641586 0.455 -0.0641585 0.195 0.195842Z" fill="white"/></svg></a></button>
+                            </div>
+                        </div>
+                        <div class="side-controls">
+                            <button class="scroll-btn" data-target="slider-3" data-dir="-1" aria-label="Previous"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1.42708 5.24375L4.66042 2.01042L7.89375 5.24375C8.21875 5.56875 8.74375 5.56875 9.06875 5.24375C9.39375 4.91875 9.39375 4.39375 9.06875 4.06875L5.24375 0.24375C4.91875 -0.08125 4.39375 -0.08125 4.06875 0.24375L0.24375 4.06875C-0.08125 4.39375 -0.08125 4.91875 0.24375 5.24375C0.56875 5.56042 1.10208 5.56875 1.42708 5.24375Z" fill="#101323"/></svg></button>
+                            <div class="scroll-dots" id="dots-3">
+                                <div class="scroll-dot active"></div>
+                                <div class="scroll-dot"></div>
+                                <div class="scroll-dot"></div>
+                                <div class="scroll-dot"></div>
+                                <div class="scroll-dot"></div>
+                            </div>
+                            <button class="scroll-btn" data-target="slider-3" data-dir="1" aria-label="Next"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1.42708 0.24375L4.66042 3.47708L7.89375 0.24375C8.21875 -0.08125 8.74375 -0.08125 9.06875 0.24375C9.39375 0.56875 9.39375 1.09375 9.06875 1.41875L5.24375 5.24375C4.91875 5.56875 4.39375 5.56875 4.06875 5.24375L0.24375 1.41875C-0.08125 1.09375 -0.08125 0.56875 0.24375 0.24375C0.56875 -0.0729167 1.10208 -0.08125 1.42708 0.24375Z" fill="#101323"/></svg></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-section">
+                    <div class="info-left">
+                        <h2><span style="color:#75ABF0;font-family:'SF Pro Text',-apple-system,sans-serif;font-size:24px;font-weight:700;letter-spacing:-1.2px;text-transform:uppercase;">Water Tracker</span><span style="color:#101323;font-family:'SF Pro Text',-apple-system,sans-serif;font-size:24px;font-weight:600;letter-spacing:-1.2px;"> – Build Your Hydration Habit in 21 Days</span></h2>
+                        <p style="color:rgba(16,19,35,0.64);font-family:'SF Pro Text',-apple-system,sans-serif;font-size:16px;font-weight:400;line-height:24px;letter-spacing:-0.4px;">Set daily water goals, get smart reminders, and track your progress through a simple 21-day challenge.</p>
+                    </div>
+                    <div class="info-right">
+                        <div class="meta-row"><span class="meta-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8.33333 10.8333C8.69121 11.3118 9.1478 11.7077 9.67212 11.9941C10.1965 12.2806 10.7763 12.4509 11.3722 12.4936C11.9682 12.5363 12.5663 12.4503 13.1261 12.2415C13.6859 12.0327 14.1943 11.7059 14.6167 11.2833L17.1167 8.78334C17.8757 7.9975 18.2956 6.94499 18.2861 5.85251C18.2766 4.76002 17.8384 3.71497 17.0659 2.94243C16.2934 2.1699 15.2483 1.7317 14.1558 1.7222C13.0633 1.71271 12.0108 2.13269 11.225 2.89168L9.79166 4.31668M11.6667 9.16668C11.3088 8.68824 10.8522 8.29236 10.3279 8.00589C9.80355 7.71943 9.22374 7.54908 8.62779 7.5064C8.03184 7.46372 7.43368 7.54971 6.87388 7.75853C6.31408 7.96735 5.80574 8.29412 5.38333 8.71668L2.88333 11.2167C2.12434 12.0025 1.70436 13.055 1.71386 14.1475C1.72335 15.24 2.16155 16.2851 2.93409 17.0576C3.70662 17.8301 4.75167 18.2683 5.84416 18.2778C6.93665 18.2873 7.98916 17.8673 8.775 17.1083L10.2 15.6833" stroke="#5D6B98" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta-label">Project:</span><a class="meta-link" href="https://www.figma.com/proto/4GXd7Gw0EOL3zgxmJ9EGUh/Porfolio?node-id=424-5727" target="_blank">Case Study</a></div>
+                        <div class="meta-row"><span class="meta-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17.5 8.33335H2.5M13.3333 1.66669V5.00002M6.66667 1.66669V5.00002M6.5 18.3334H13.5C14.9001 18.3334 15.6002 18.3334 16.135 18.0609C16.6054 17.8212 16.9878 17.4387 17.2275 16.9683C17.5 16.4335 17.5 15.7335 17.5 14.3334V7.33335C17.5 5.93322 17.5 5.23316 17.2275 4.69838C16.9878 4.22797 16.6054 3.84552 16.135 3.60584C15.6002 3.33335 14.9001 3.33335 13.5 3.33335H6.5C5.09987 3.33335 4.3998 3.33335 3.86502 3.60584C3.39462 3.84552 3.01217 4.22797 2.77248 4.69838C2.5 5.23316 2.5 5.93322 2.5 7.33335V14.3334C2.5 15.7335 2.5 16.4335 2.77248 16.9683C3.01217 17.4387 3.39462 17.8212 3.86502 18.0609C4.3998 18.3334 5.09987 18.3334 6.5 18.3334Z" stroke="#5D6B98" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta-label">Time:</span><span class="meta-val">6 weeks</span></div>
+                        <div class="meta-row"><span class="meta-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.33333 5.83331C3.33333 5.37498 3.70833 4.99998 4.16667 4.99998H17.5C17.9583 4.99998 18.3333 4.62498 18.3333 4.16665C18.3333 3.70831 17.9583 3.33331 17.5 3.33331H3.33333C2.41667 3.33331 1.66667 4.08331 1.66667 4.99998V14.1666H1.25C0.558333 14.1666 0 14.725 0 15.4166C0 16.1083 0.558333 16.6666 1.25 16.6666H11.6667V14.1666H3.33333V5.83331ZM19.1667 6.66665H14.1667C13.7083 6.66665 13.3333 7.04165 13.3333 7.49998V15.8333C13.3333 16.2916 13.7083 16.6666 14.1667 16.6666H19.1667C19.625 16.6666 20 16.2916 20 15.8333V7.49998C20 7.04165 19.625 6.66665 19.1667 6.66665ZM18.3333 14.1666H15V8.33331H18.3333V14.1666Z" fill="#5D6B98"/></svg></span><span class="meta-label">Device:</span><span class="meta-val">Mobile + Wearable</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══ CARD 4: STARBUCKS ══ -->
+            <div class="card-wrapper">
+                <div class="tablet-color">
+                    <div class="tablet-area">
+                        <div class="tablet-ring4">
+                            <div class="tablet-frame" style="background: #494F4D">
+                                <div class="tablet-screen">
+                                    <div class="slider-track" id="slider-4">
+                                        <div class="slide"><img src="/image/stb1.png" alt=""></div>
+                                        <div class="slide"><img src="/image/stb2.png" alt=""></div>
+                                        <div class="slide"><img src="/image/stb3.png" alt=""></div>
+                                        <div class="slide"><img src="/image/stb4.png" alt=""></div>
+                                        <div class="slide"><img src="/image/stb5.png" alt=""></div>
+                                    </div>
+                                </div>
+                                <button class="tablet-hover-btn"><a href="https://www.figma.com/proto/4GXd7Gw0EOL3zgxmJ9EGUh/Porfolio?node-id=424-6201" target="_blank">Xem chi tiết <svg xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8" fill="none"><path d="M0.195 0.195842C-0.065 0.455842 -0.065 0.875841 0.195 1.13584L2.78167 3.72251L0.195 6.30918C-0.065 6.56918 -0.065 6.98918 0.195 7.24918C0.455 7.50918 0.875 7.50918 1.135 7.24918L4.195 4.18917C4.455 3.92917 4.455 3.50917 4.195 3.24917L1.135 0.189175C0.881667 -0.0641586 0.455 -0.0641585 0.195 0.195842Z" fill="white"/></svg></a></button>
+                            </div>
+                        </div>
+                        <div class="side-controls">
+                            <button class="scroll-btn" data-target="slider-4" data-dir="-1" aria-label="Previous"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1.42708 5.24375L4.66042 2.01042L7.89375 5.24375C8.21875 5.56875 8.74375 5.56875 9.06875 5.24375C9.39375 4.91875 9.39375 4.39375 9.06875 4.06875L5.24375 0.24375C4.91875 -0.08125 4.39375 -0.08125 4.06875 0.24375L0.24375 4.06875C-0.08125 4.39375 -0.08125 4.91875 0.24375 5.24375C0.56875 5.56042 1.10208 5.56875 1.42708 5.24375Z" fill="#101323"/></svg></button>
+                            <div class="scroll-dots" id="dots-4">
+                                <div class="scroll-dot active"></div>
+                                <div class="scroll-dot"></div>
+                                <div class="scroll-dot"></div>
+                                <div class="scroll-dot"></div>
+                                <div class="scroll-dot"></div>
+                            </div>
+                            <button class="scroll-btn" data-target="slider-4" data-dir="1" aria-label="Next"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1.42708 0.24375L4.66042 3.47708L7.89375 0.24375C8.21875 -0.08125 8.74375 -0.08125 9.06875 0.24375C9.39375 0.56875 9.39375 1.09375 9.06875 1.41875L5.24375 5.24375C4.91875 5.56875 4.39375 5.56875 4.06875 5.24375L0.24375 1.41875C-0.08125 1.09375 -0.08125 0.56875 0.24375 0.24375C0.56875 -0.0729167 1.10208 -0.08125 1.42708 0.24375Z" fill="#101323"/></svg></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-section">
+                    <div class="info-left">
+                        <h2><span style="color:#276E4C;font-family:'SF Pro Text',-apple-system,sans-serif;font-size:24px;font-weight:700;letter-spacing:-1.2px;">STARBUCKS</span><span style="color:#101323;font-size:24px;font-family:'SF Pro Text',-apple-system,sans-serif;font-weight:600;letter-spacing:-1.2px;"> - Redesign VietNam Starbucks App</span></h2>
+                        <p style="color:rgba(16,19,35,0.64);font-family:'SF Pro Text',-apple-system,sans-serif;font-size:16px;font-weight:400;line-height:24px;letter-spacing:-0.4px;">A fresh, modern redesign, and a smoother experience that brings the brand's coffee-first spirit to life.</p>
+                    </div>
+                    <div class="info-right">
+                        <div class="meta-row"><span class="meta-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8.33333 10.8333C8.69121 11.3118 9.1478 11.7077 9.67212 11.9941C10.1965 12.2806 10.7763 12.4509 11.3722 12.4936C11.9682 12.5363 12.5663 12.4503 13.1261 12.2415C13.6859 12.0327 14.1943 11.7059 14.6167 11.2833L17.1167 8.78334C17.8757 7.9975 18.2956 6.94499 18.2861 5.85251C18.2766 4.76002 17.8384 3.71497 17.0659 2.94243C16.2934 2.1699 15.2483 1.7317 14.1558 1.7222C13.0633 1.71271 12.0108 2.13269 11.225 2.89168L9.79166 4.31668M11.6667 9.16668C11.3088 8.68824 10.8522 8.29236 10.3279 8.00589C9.80355 7.71943 9.22374 7.54908 8.62779 7.5064C8.03184 7.46372 7.43368 7.54971 6.87388 7.75853C6.31408 7.96735 5.80574 8.29412 5.38333 8.71668L2.88333 11.2167C2.12434 12.0025 1.70436 13.055 1.71386 14.1475C1.72335 15.24 2.16155 16.2851 2.93409 17.0576C3.70662 17.8301 4.75167 18.2683 5.84416 18.2778C6.93665 18.2873 7.98916 17.8673 8.775 17.1083L10.2 15.6833" stroke="#5D6B98" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta-label">Project:</span><a class="meta-link" href="https://www.figma.com/proto/4GXd7Gw0EOL3zgxmJ9EGUh/Porfolio?node-id=424-6201" target="_blank">Case Study</a></div>
+                        <div class="meta-row"><span class="meta-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17.5 8.33335H2.5M13.3333 1.66669V5.00002M6.66667 1.66669V5.00002M6.5 18.3334H13.5C14.9001 18.3334 15.6002 18.3334 16.135 18.0609C16.6054 17.8212 16.9878 17.4387 17.2275 16.9683C17.5 16.4335 17.5 15.7335 17.5 14.3334V7.33335C17.5 5.93322 17.5 5.23316 17.2275 4.69838C16.9878 4.22797 16.6054 3.84552 16.135 3.60584C15.6002 3.33335 14.9001 3.33335 13.5 3.33335H6.5C5.09987 3.33335 4.3998 3.33335 3.86502 3.60584C3.39462 3.84552 3.01217 4.22797 2.77248 4.69838C2.5 5.23316 2.5 5.93322 2.5 7.33335V14.3334C2.5 15.7335 2.5 16.4335 2.77248 16.9683C3.01217 17.4387 3.39462 17.8212 3.86502 18.0609C4.3998 18.3334 5.09987 18.3334 6.5 18.3334Z" stroke="#5D6B98" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta-label">Time:</span><span class="meta-val">10 weeks</span></div>
+                        <div class="meta-row"><span class="meta-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.33333 5.83331C3.33333 5.37498 3.70833 4.99998 4.16667 4.99998H17.5C17.9583 4.99998 18.3333 4.62498 18.3333 4.16665C18.3333 3.70831 17.9583 3.33331 17.5 3.33331H3.33333C2.41667 3.33331 1.66667 4.08331 1.66667 4.99998V14.1666H1.25C0.558333 14.1666 0 14.725 0 15.4166C0 16.1083 0.558333 16.6666 1.25 16.6666H11.6667V14.1666H3.33333V5.83331ZM19.1667 6.66665H14.1667C13.7083 6.66665 13.3333 7.04165 13.3333 7.49998V15.8333C13.3333 16.2916 13.7083 16.6666 14.1667 16.6666H19.1667C19.625 16.6666 20 16.2916 20 15.8333V7.49998C20 7.04165 19.625 6.66665 19.1667 6.66665ZM18.3333 14.1666H15V8.33331H18.3333V14.1666Z" fill="#5D6B98"/></svg></span><span class="meta-label">Device:</span><span class="meta-val">Mobile</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══ CARD 5: GOOSE ══ -->
+            <div class="card-wrapper">
+                <div class="tablet-color">
+                    <div class="tablet-area">
+                        <div class="tablet-ring5">
+                            <div class="tablet-frame" style="background: #4F3B3E">
+                                <div class="tablet-screen">
+                                    <div class="slider-track" id="slider-5">
+                                        <div class="slide"><img src="/image/1.png" alt=""></div>
+                                        <div class="slide"><img src="/image/2.png" alt=""></div>
+                                        <div class="slide"><img src="/image/3.png" alt=""></div>
+                                        <div class="slide"><img src="/image/4.png" alt=""></div>
+                                        <div class="slide"><img src="/image/5.png" alt=""></div>
+                                    </div>
+                                </div>
+                                <button class="tablet-hover-btn"><a href="https://www.figma.com/proto/4GXd7Gw0EOL3zgxmJ9EGUh/Porfolio?node-id=424-5778" target="_blank">Xem chi tiết <svg xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8" fill="none"><path d="M0.195 0.195842C-0.065 0.455842 -0.065 0.875841 0.195 1.13584L2.78167 3.72251L0.195 6.30918C-0.065 6.56918 -0.065 6.98918 0.195 7.24918C0.455 7.50918 0.875 7.50918 1.135 7.24918L4.195 4.18917C4.455 3.92917 4.455 3.50917 4.195 3.24917L1.135 0.189175C0.881667 -0.0641586 0.455 -0.0641585 0.195 0.195842Z" fill="white"/></svg></a></button>
+                            </div>
+                        </div>
+                        <div class="side-controls">
+                            <button class="scroll-btn" data-target="slider-5" data-dir="-1" aria-label="Previous"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1.42708 5.24375L4.66042 2.01042L7.89375 5.24375C8.21875 5.56875 8.74375 5.56875 9.06875 5.24375C9.39375 4.91875 9.39375 4.39375 9.06875 4.06875L5.24375 0.24375C4.91875 -0.08125 4.39375 -0.08125 4.06875 0.24375L0.24375 4.06875C-0.08125 4.39375 -0.08125 4.91875 0.24375 5.24375C0.56875 5.56042 1.10208 5.56875 1.42708 5.24375Z" fill="#101323"/></svg></button>
+                            <div class="scroll-dots" id="dots-5">
+                                <div class="scroll-dot active"></div>
+                                <div class="scroll-dot"></div>
+                                <div class="scroll-dot"></div>
+                                <div class="scroll-dot"></div>
+                                <div class="scroll-dot"></div>
+                            </div>
+                            <button class="scroll-btn" data-target="slider-5" data-dir="1" aria-label="Next"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1.42708 0.24375L4.66042 3.47708L7.89375 0.24375C8.21875 -0.08125 8.74375 -0.08125 9.06875 0.24375C9.39375 0.56875 9.39375 1.09375 9.06875 1.41875L5.24375 5.24375C4.91875 5.56875 4.39375 5.56875 4.06875 5.24375L0.24375 1.41875C-0.08125 1.09375 -0.08125 0.56875 0.24375 0.24375C0.56875 -0.0729167 1.10208 -0.08125 1.42708 0.24375Z" fill="#101323"/></svg></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-section">
+                    <div class="info-left">
+                        <h2><span style="color:#F27137;font-size:24px;font-family:'SF Pro Text',-apple-system,sans-serif;font-weight:700;letter-spacing:-1.2px;">GOOSE</span><span style="color:#101323;font-size:24px;font-family:'SF Pro Text',-apple-system,sans-serif;font-weight:600;letter-spacing:-1.2px;"> - App for chatting with foreigners on various topics.</span></h2>
+                        <p style="color:rgba(16,19,35,0.64);font-family:'SF Pro Text',-apple-system,sans-serif;font-size:16px;font-weight:400;line-height:24px;letter-spacing:-0.4px;">An app for practicing conversations with people from around the world, covering various topics to help you build confidence and fluency.</p>
+                    </div>
+                    <div class="info-right">
+                        <div class="meta-row"><span class="meta-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8.33333 10.8333C8.69121 11.3118 9.1478 11.7077 9.67212 11.9941C10.1965 12.2806 10.7763 12.4509 11.3722 12.4936C11.9682 12.5363 12.5663 12.4503 13.1261 12.2415C13.6859 12.0327 14.1943 11.7059 14.6167 11.2833L17.1167 8.78334C17.8757 7.9975 18.2956 6.94499 18.2861 5.85251C18.2766 4.76002 17.8384 3.71497 17.0659 2.94243C16.2934 2.1699 15.2483 1.7317 14.1558 1.7222C13.0633 1.71271 12.0108 2.13269 11.225 2.89168L9.79166 4.31668M11.6667 9.16668C11.3088 8.68824 10.8522 8.29236 10.3279 8.00589C9.80355 7.71943 9.22374 7.54908 8.62779 7.5064C8.03184 7.46372 7.43368 7.54971 6.87388 7.75853C6.31408 7.96735 5.80574 8.29412 5.38333 8.71668L2.88333 11.2167C2.12434 12.0025 1.70436 13.055 1.71386 14.1475C1.72335 15.24 2.16155 16.2851 2.93409 17.0576C3.70662 17.8301 4.75167 18.2683 5.84416 18.2778C6.93665 18.2873 7.98916 17.8673 8.775 17.1083L10.2 15.6833" stroke="#5D6B98" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta-label">Project:</span><a class="meta-link" href="https://www.figma.com/proto/4GXd7Gw0EOL3zgxmJ9EGUh/Porfolio?node-id=424-5778" target="_blank">Case Study</a></div>
+                        <div class="meta-row"><span class="meta-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17.5 8.33335H2.5M13.3333 1.66669V5.00002M6.66667 1.66669V5.00002M6.5 18.3334H13.5C14.9001 18.3334 15.6002 18.3334 16.135 18.0609C16.6054 17.8212 16.9878 17.4387 17.2275 16.9683C17.5 16.4335 17.5 15.7335 17.5 14.3334V7.33335C17.5 5.93322 17.5 5.23316 17.2275 4.69838C16.9878 4.22797 16.6054 3.84552 16.135 3.60584C15.6002 3.33335 14.9001 3.33335 13.5 3.33335H6.5C5.09987 3.33335 4.3998 3.33335 3.86502 3.60584C3.39462 3.84552 3.01217 4.22797 2.77248 4.69838C2.5 5.23316 2.5 5.93322 2.5 7.33335V14.3334C2.5 15.7335 2.5 16.4335 2.77248 16.9683C3.01217 17.4387 3.39462 17.8212 3.86502 18.0609C4.3998 18.3334 5.09987 18.3334 6.5 18.3334Z" stroke="#5D6B98" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta-label">Time:</span><span class="meta-val">8 weeks</span></div>
+                        <div class="meta-row"><span class="meta-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.33333 5.83331C3.33333 5.37498 3.70833 4.99998 4.16667 4.99998H17.5C17.9583 4.99998 18.3333 4.62498 18.3333 4.16665C18.3333 3.70831 17.9583 3.33331 17.5 3.33331H3.33333C2.41667 3.33331 1.66667 4.08331 1.66667 4.99998V14.1666H1.25C0.558333 14.1666 0 14.725 0 15.4166C0 16.1083 0.558333 16.6666 1.25 16.6666H11.6667V14.1666H3.33333V5.83331ZM19.1667 6.66665H14.1667C13.7083 6.66665 13.3333 7.04165 13.3333 7.49998V15.8333C13.3333 16.2916 13.7083 16.6666 14.1667 16.6666H19.1667C19.625 16.6666 20 16.2916 20 15.8333V7.49998C20 7.04165 19.625 6.66665 19.1667 6.66665ZM18.3333 14.1666H15V8.33331H18.3333V14.1666Z" fill="#5D6B98"/></svg></span><span class="meta-label">Device:</span><span class="meta-val">Mobile + Tablet</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /hero-right -->
+    </div>
+</section>
+
+<script>
+    // ── Safari viewport height fix ──
+    function setVh() {
+        var vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', vh + 'px');
+    }
+    setVh();
+    window.addEventListener('resize', setVh);
+    window.addEventListener('orientationchange', function() {
+        setTimeout(setVh, 100);
+    });
+
+    // ── Slider logic ──
+    (function () {
+        var sliders = {};
+
+        function initSlider(sliderId) {
+            var track = document.getElementById(sliderId);
+            if (!track) return;
+
+            var dotsId = 'dots-' + sliderId.replace('slider-', '');
+            var dotsContainer = document.getElementById(dotsId);
+            var slides = track.querySelectorAll('.slide');
+            var total = slides.length;
+
+            sliders[sliderId] = { current: 0, total: total, locked: false };
+
+            function getSlideHeight() {
+                var screen = track.closest ? track.closest('.tablet-screen') : null;
+                if (!screen) {
+                    // Fallback for older Safari
+                    var el = track.parentNode;
+                    while (el && !el.classList.contains('tablet-screen')) {
+                        el = el.parentNode;
+                    }
+                    screen = el;
+                }
+                return screen ? screen.offsetHeight : 321;
+            }
+
+            function goTo(idx) {
+                var state = sliders[sliderId];
+                if (state.locked) return;
+                idx = Math.max(0, Math.min(state.total - 1, idx));
+                state.current = idx;
+                state.locked = true;
+
+                var slideH = getSlideHeight();
+                track.style.webkitTransform = 'translateY(-' + (idx * slideH) + 'px)';
+                track.style.transform = 'translateY(-' + (idx * slideH) + 'px)';
+
+                if (dotsContainer) {
+                    var dots = dotsContainer.querySelectorAll('.scroll-dot');
+                    for (var i = 0; i < dots.length; i++) {
+                        dots[i].classList.toggle('active', i === idx);
+                    }
+                }
+
+                var btns = document.querySelectorAll('[data-target="' + sliderId + '"]');
+                for (var b = 0; b < btns.length; b++) {
+                    var dir = parseInt(btns[b].getAttribute('data-dir'), 10);
+                    btns[b].disabled = (dir === -1 && idx === 0) || (dir === 1 && idx === state.total - 1);
+                }
+
+                setTimeout(function() { state.locked = false; }, 570);
+            }
+
+            // Button click handlers
+            var btns = document.querySelectorAll('[data-target="' + sliderId + '"]');
+            (function(id) {
+                for (var b = 0; b < btns.length; b++) {
+                    (function(btn) {
+                        btn.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            var dir = parseInt(btn.getAttribute('data-dir'), 10);
+                            goTo(sliders[id].current + dir);
+                        });
+                        // Touch events for better Safari response
+                        btn.addEventListener('touchend', function(e) {
+                            e.preventDefault();
+                            var dir = parseInt(btn.getAttribute('data-dir'), 10);
+                            goTo(sliders[id].current + dir);
+                        }, { passive: false });
+                    })(btns[b]);
+                }
+            })(sliderId);
+
+            // Dot click handlers
+            if (dotsContainer) {
+                var dots = dotsContainer.querySelectorAll('.scroll-dot');
+                (function(id) {
+                    for (var d = 0; d < dots.length; d++) {
+                        (function(dot, idx) {
+                            dot.addEventListener('click', function() { goTo(idx); });
+                        })(dots[d], d);
+                    }
+                })(sliderId);
+            }
+
+            // Touch swipe on the screen
+            var screen = track.parentNode;
+            var startY = 0;
+            screen.addEventListener('touchstart', function(e) {
+                startY = e.touches[0].clientY;
+            }, { passive: true });
+            screen.addEventListener('touchend', function(e) {
+                var diff = startY - e.changedTouches[0].clientY;
+                if (Math.abs(diff) > 30) {
+                    goTo(sliders[sliderId].current + (diff > 0 ? 1 : -1));
+                }
+            }, { passive: true });
+
+            goTo(0);
+        }
+
+        ['slider-1', 'slider-2', 'slider-3', 'slider-4', 'slider-5'].forEach(initSlider);
+    })();
+
+    // ── Tablet hover button (desktop only) ──
+    if (!('ontouchstart' in window)) {
+        document.querySelectorAll('.tablet-frame').forEach(function(frame) {
+            var btn = frame.querySelector('.tablet-hover-btn');
+            if (!btn) return;
+
+            frame.addEventListener('mousemove', function(e) {
+                var rect = frame.getBoundingClientRect();
+                var x = e.clientX - rect.left;
+                var y = e.clientY - rect.top;
+                btn.style.left = x + 'px';
+                btn.style.top = y + 'px';
+                btn.style.opacity = '1';
+                btn.style.webkitTransform = 'translate(-50%, -50%) scale(1)';
+                btn.style.transform = 'translate(-50%, -50%) scale(1)';
+                btn.style.pointerEvents = 'auto';
+            });
+
+            frame.addEventListener('mouseleave', function() {
+                btn.style.opacity = '0';
+                btn.style.webkitTransform = 'translate(-50%, -50%) scale(0.9)';
+                btn.style.transform = 'translate(-50%, -50%) scale(0.9)';
+                btn.style.pointerEvents = 'none';
+            });
+        });
+    }
+</script>
+</body>
+</html>
