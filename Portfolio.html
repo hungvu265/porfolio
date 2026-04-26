@@ -448,7 +448,7 @@
         pageContent.classList.remove('visible');
         percentEl.textContent = '0%';
 
-        const duration  = 2500;
+        const duration  = 100;
         const startTime = Date.now();
 
         function animate() {
@@ -479,6 +479,24 @@
 
     // Auto-run on page load
     runOverlay();
+</script>
+
+<script>
+    // ── Sync wheel scroll from hero-left to hero-right ──
+    document.addEventListener('DOMContentLoaded', function() {
+        const heroLeft = document.querySelector('.hero-left');
+        const heroRightWrapper = document.querySelector('.hero-right');
+
+        if (heroLeft && heroRightWrapper) {
+            heroLeft.addEventListener('wheel', function(e) {
+                // Prevent default scroll behavior on hero-left
+                e.preventDefault();
+
+                // Transfer scroll to hero-right (works both up and down)
+                heroRightWrapper.scrollTop += e.deltaY;
+            }, { passive: false });
+        }
+    });
 </script>
 </body>
 </html>
