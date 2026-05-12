@@ -9,6 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Caveat:wght@500;600&display=swap"
           rel="stylesheet">
     <link rel="icon" type="image/png" href="UI%20Design%205/Logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
 
@@ -28,6 +32,8 @@
             --radius-sm: 10px;
             --shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
             --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.12);
+            --font-heading: 'Roboto Condensed', sans-serif;
+
         }
 
         @font-face {
@@ -741,7 +747,8 @@
 
         .span-profile1 {
             color: #101323;
-            font-size: 48px;
+            font-family: var(--font-heading);
+            font-size: 46px;
             font-style: normal;
             font-weight: 650;
             line-height: normal;
@@ -751,6 +758,7 @@
         }
 
         .span-profile {
+            font-family: var(--font-heading);
             color: rgba(16, 19, 35, 0.64);
             font-size: 40px;
             font-style: normal;
@@ -835,8 +843,8 @@
             .profile { width: 100%; padding-top: 0; -webkit-justify-content: flex-start; justify-content: flex-start; -webkit-align-items: flex-start; align-items: flex-start; }
             .hero-avatar-placeholder { padding-bottom: 24px; padding-top: 0; }
             .hero-avatar-placeholder img { width: 64px; height: 64px; }
-            .span-profile1 { font-size: 48px; letter-spacing: -0.4px; white-space: nowrap; padding-bottom: 2px; }
-            .span-profile { font-size: 40px; letter-spacing: -0.5px; padding-bottom: 8px; }
+            .span-profile1 { font-family: var(--font-heading);font-size: 46px; letter-spacing: -0.4px; white-space: nowrap; padding-bottom: 2px; }
+            .span-profile { font-family: var(--font-heading); font-size: 40px; letter-spacing: -0.5px; padding-bottom: 8px; }
             .hero-desc { font-size: 14px; line-height: 20px; padding-bottom: 24px; }
             .hero-ctas { padding-bottom: 0; gap: 12px; }
             .btn { padding: 10px 20px; font-size: 14px; }
@@ -1002,7 +1010,8 @@
             .hero-avatar-placeholder img { width: 56px; height: 56px; }
 
             .span-profile1 {
-                font-size: 48px;
+                font-family: var(--font-heading);
+                font-size: 46px;
                 white-space: normal;
                 font-style: normal;
                 font-weight: 650;
@@ -1011,6 +1020,7 @@
                 padding-bottom: 2px;
             }
             .span-profile {
+                font-family: var(--font-heading);
                 font-size: 40px;
                 font-style: normal;
                 font-weight: 650;
@@ -1288,7 +1298,8 @@
             .hero-avatar-placeholder img { width: 56px; height: 56px; }
 
             .span-profile1 {
-                font-size: 48px;
+                font-family: var(--font-heading);
+                font-size: 46px;
                 white-space: normal;
                 font-style: normal;
                 font-weight: 650;
@@ -1297,6 +1308,7 @@
                 padding-bottom: 2px;
             }
             .span-profile {
+                font-family: var(--font-heading);
                 font-size: 40px;
                 font-style: normal;
                 font-weight: 650;
@@ -1352,10 +1364,8 @@
 
             /* Tablet preview: full width minus card padding */
             .tablet-color {
-                width: 100%;
-                max-width: 100%;
-                height: auto;
-                min-height: 180px;
+                width: 343px;
+                height: 196px;
                 padding: 12px;
                 border-radius: 21.951px;
                 background: #F6F7F9;
@@ -1395,8 +1405,8 @@
             }
 
             .tablet-frame {
-                width: 100%;
-                height: 100%;
+                width: 280px;
+                height: 166px;
                 border-radius: 10.861px;
                 position: relative;
             }
@@ -1506,8 +1516,8 @@
 
         /* Extra small phones (< 390px) */
         @media (max-width: 389px) {
-            .span-profile1 { font-size: 40px; }
-            .span-profile { font-size: 32px; }
+            .span-profile1 { font-size: 40px; font-family: var(--font-heading); }
+            .span-profile { font-size: 32px; font-family: var(--font-heading);}
             .hero-left { padding: 40px 16px 24px 16px; }
             .hero-right { padding: 0 16px 48px 16px; }
             .scroll-btn { min-width: 24px; min-height: 24px; width: 24px; height: 24px; }
@@ -1626,8 +1636,8 @@
                         <img src="/UI%20Design%205/image.png" alt="">
                     </div>
 
-                    <span class="span-profile1" style="font-family: MyFont, -apple-system, sans-serif;">Designing for growth,</span>
-                    <span class="span-profile" style="font-family: MyFont, -apple-system, sans-serif;">optimized for people.</span>
+                    <span class="span-profile1">Designing for growth,</span>
+                    <span class="span-profile">optimized for people.</span>
                     <p class="hero-desc">My work focuses on understanding users deeply and turning insights into clear, scalable
                         product solutions.</p>
                     <div class="hero-ctas">
